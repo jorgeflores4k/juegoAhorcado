@@ -1,6 +1,7 @@
 let palabras = ["ALURA", "ORACLE", "JAVASCRIPT", "HTML", "JORGE", "TRADING"];
 let tablero = document.getElementById("forca").getContext("2d");
 let palabraSecreta = "";
+let palabraArray = [];
 
 //palabra secreta
 
@@ -9,11 +10,16 @@ function escogerPalabraSecreta(){
     palabraSecreta = palabra;
     console.log(palabraSecreta);
 
-    palabraArray = [palabraSecreta];
+    palabraArray = palabraSecreta.split('');
+    /*
 
-    /*let anchuraArray = 600 / palabraArray.length;
+    let anchuraArray = 600 / palabraArray.length;
     for(let i = 0; i < palabraArray.length; i++){
-        
+        var newLabel = document.createElement("label");
+        var newContent = document.createTextNode(palabraArray[i]);
+        newLabel.appendChild(newContent);
+        var currentLabel = document.getElementById("contenedor");
+        document.body.insertBefore(newLabel,currentLabel);
     }*/
 
 }
@@ -24,6 +30,10 @@ function IniciarJuego(){
     escogerPalabraSecreta();
     dibujarCanvas();
     dibujarLinea();
+    document.addEventListener('keydown', (event) => {
+        const keyName = event.key;
+        insertarLetras(keyName);
+    });
     dibujarPoste();
     dibujarViga();
     dibujarSoga();
