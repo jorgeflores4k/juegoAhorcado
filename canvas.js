@@ -15,17 +15,44 @@ function dibujarCanvas(){
     
 }
 
+function verificarLetra(valor){
+    probada = false;
+    for(let i = 0; i < letrasProbadas.length; i++){
+        if(valor == letrasProbadas[i]){
+            probada = true;
+        }
+    }
+
+    if(probada == false){
+        letrasProbadas.push(valor);
+    }
+
+    return probada;
+}
+
 function insertarLetras(valor){
     let anchura = 600/palabraSecreta.length;
+    acerto = false;
     
-    for(let i = 0; i < palabraArray.length; i++){
-        if(valor == palabraArray[i]){
-            tablero.font = "30px Arial";
-            tablero.strokeText(palabraArray[i], 215 + (anchura * i), 475);
-        }/*else{
-            tablero.font = "20px Arial";
-            tablero.strokeText(valor, 200 + (anchura * i), 550);
-        }*/
+    if(verificarLetra(valor) == false){
+        for(let i = 0; i < palabraArray.length; i++){
+            if(valor == palabraArray[i]){
+                tablero.font = "30px Arial";
+                tablero.strokeText(palabraArray[i], 215 + (anchura * i), 475);
+                acerto = true;
+            }
+        }
+        if(acerto == false){
+            letrasEquivocadas.push(valor);
+            for(let i = 0; i <= letrasEquivocadas.length; i++){
+                if(i == letrasEquivocadas.length - 1){
+                    tablero.font = "20px Arial";
+                    tablero.strokeText(letrasEquivocadas[i], 250 + ((anchura/2) * i), 550);
+                }
+                
+            }
+            
+        }
     }
 }
 

@@ -2,6 +2,8 @@ let palabras = ["ALURA", "ORACLE", "JAVASCRIPT", "HTML", "JORGE", "TRADING"];
 let tablero = document.getElementById("forca").getContext("2d");
 let palabraSecreta = "";
 let palabraArray = [];
+var letrasProbadas = [];
+var letrasEquivocadas = [];
 
 //palabra secreta
 
@@ -44,4 +46,5 @@ function IniciarJuego(){
     dibujarDorso();
     dibujarPiernaDerecha();
     dibujarPiernaIzquierda();
+    
 }
