@@ -4,6 +4,9 @@ let palabraSecreta = "";
 let palabraArray = [];
 var letrasProbadas = [];
 var letrasEquivocadas = [];
+let numIntentos = 0;
+let cantAciertos = 0;
+let letrasAcertadas = 0;
 
 //palabra secreta
 
@@ -13,6 +16,8 @@ function escogerPalabraSecreta(){
     console.log(palabraSecreta);
 
     palabraArray = palabraSecreta.split('');
+    cantAciertos = palabraArray.length;
+    
     /*
 
     let anchuraArray = 600 / palabraArray.length;
@@ -36,15 +41,6 @@ function IniciarJuego(){
         const keyName = event.key;
         insertarLetras(keyName);
     });
-    dibujarPoste();
-    dibujarViga();
-    dibujarSoga();
-    dibujarCabeza();
-    dibujarCuello();
-    dibujarBrazoDerecho();
-    dibujarBrazoIzquierdo();
-    dibujarDorso();
-    dibujarPiernaDerecha();
-    dibujarPiernaIzquierda();
+    
     
 }

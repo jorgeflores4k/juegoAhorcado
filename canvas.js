@@ -33,27 +33,85 @@ function verificarLetra(valor){
 function insertarLetras(valor){
     let anchura = 600/palabraSecreta.length;
     acerto = false;
-    
-    if(verificarLetra(valor) == false){
-        for(let i = 0; i < palabraArray.length; i++){
-            if(valor == palabraArray[i]){
-                tablero.font = "30px Arial";
-                tablero.strokeText(palabraArray[i], 215 + (anchura * i), 475);
-                acerto = true;
-            }
-        }
-        if(acerto == false){
-            letrasEquivocadas.push(valor);
-            for(let i = 0; i <= letrasEquivocadas.length; i++){
-                if(i == letrasEquivocadas.length - 1){
-                    tablero.font = "20px Arial";
-                    tablero.strokeText(letrasEquivocadas[i], 250 + ((anchura/2) * i), 550);
+
+    if(numIntentos == 10){
+        alert("El juego termino");
+    }else{
+        if(verificarLetra(valor) == false){
+            for(let i = 0; i < palabraArray.length; i++){
+                if(valor == palabraArray[i]){
+                    tablero.font = "30px Arial";
+                    tablero.strokeText(palabraArray[i], 215 + (anchura * i), 475);
+                    acerto = true;
+                    letrasAcertadas++;
+                    if(letrasAcertadas == cantAciertos){
+                        ganador();
+                        numIntentos = 10;
+                        break;
+                    }
                 }
-                
             }
-            
+            if(acerto == false){
+                numIntentos++;
+                dibujarAhorcado(numIntentos);
+                letrasEquivocadas.push(valor);
+                for(let i = 0; i <= letrasEquivocadas.length; i++){
+                    if(i == letrasEquivocadas.length - 1){
+                        tablero.font = "20px Arial";
+                        tablero.strokeText(letrasEquivocadas[i], 250 + ((anchura/2) * i), 550);
+                    }
+                    
+                }
+            }
         }
     }
+}
+
+function dibujarAhorcado(num){
+    switch(num){
+        case 1:
+            dibujarPoste();
+            break;
+        case 2:
+            dibujarViga();
+            break;
+        case 3:
+            dibujarSoga()
+            break;
+        case 4:
+            dibujarCabeza();
+            break;
+        case 5:
+            dibujarCuello();
+            break;
+        case 6:
+            dibujarBrazoIzquierdo();
+            break;
+        case 7:
+            dibujarBrazoDerecho();
+            break;
+        case 8:
+            dibujarDorso();
+            break;
+        case 9:
+            dibujarPiernaIzquierda();
+            break;
+        default:
+            dibujarPiernaDerecha();
+            finDelJuego();
+            break;
+
+    }
+}
+
+function ganador(){
+    tablero.font = "30px Arial";
+    tablero.strokeText("Ganaste, Felicidades!!!", 650, 250);
+}
+
+function finDelJuego(){
+    tablero.font = "30px Arial";
+    tablero.strokeText("Fin del Juego", 650, 250);
 }
 
 function dibujarLinea(){
