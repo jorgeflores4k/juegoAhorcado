@@ -34,37 +34,41 @@ function insertarLetras(valor){
     let anchura = 600/palabraSecreta.length;
     acerto = false;
 
-    if(numIntentos == 10){
-        alert("El juego termino");
-    }else{
-        if(verificarLetra(valor) == false){
-            for(let i = 0; i < palabraArray.length; i++){
-                if(valor == palabraArray[i]){
-                    tablero.font = "30px Arial";
-                    tablero.strokeText(palabraArray[i], 215 + (anchura * i), 475);
-                    acerto = true;
-                    letrasAcertadas++;
-                    if(letrasAcertadas == cantAciertos){
-                        ganador();
-                        numIntentos = 10;
-                        break;
+    if(validarLetraMayuscula(valor)){
+        if(juegoFinalizado){  //numIntentos == 10
+            //alert("El juego termino");
+        }else{
+            if(verificarLetra(valor) == false){
+                for(let i = 0; i < palabraArray.length; i++){
+                    if(valor == palabraArray[i]){
+                        tablero.font = "30px Arial";
+                        tablero.strokeText(palabraArray[i], 215 + (anchura * i), 475);
+                        acerto = true;
+                        letrasAcertadas++;
+                        if(letrasAcertadas == cantAciertos){
+                            ganador();
+                            juegoFinalizado = true;
+                            //numIntentos = 10;
+                            
+                        }
                     }
                 }
-            }
-            if(acerto == false){
-                numIntentos++;
-                dibujarAhorcado(numIntentos);
-                letrasEquivocadas.push(valor);
-                for(let i = 0; i <= letrasEquivocadas.length; i++){
-                    if(i == letrasEquivocadas.length - 1){
-                        tablero.font = "20px Arial";
-                        tablero.strokeText(letrasEquivocadas[i], 250 + ((anchura/2) * i), 550);
+                if(acerto == false){
+                    numIntentos++;
+                    dibujarAhorcado(numIntentos);
+                    letrasEquivocadas.push(valor);
+                    for(let i = 0; i <= letrasEquivocadas.length; i++){
+                        if(i == letrasEquivocadas.length - 1){
+                            tablero.font = "20px Arial";
+                            tablero.strokeText(letrasEquivocadas[i], 250 + ((anchura/2) * i), 550);
+                        }
+                        
                     }
-                    
                 }
             }
         }
     }
+    console.log(numIntentos);
 }
 
 function dibujarAhorcado(num){
@@ -99,6 +103,7 @@ function dibujarAhorcado(num){
         default:
             dibujarPiernaDerecha();
             finDelJuego();
+            juegoFinalizado = true;
             break;
 
     }
@@ -113,6 +118,20 @@ function finDelJuego(){
     tablero.font = "30px Arial";
     tablero.strokeText("Fin del Juego", 650, 250);
 }
+
+function limpiarCanvas(){
+    tablero.clearRect(0,0,1200,860);
+    palabraSecreta = "";
+    palabraArray = [];
+    letrasProbadas = [];
+    letrasEquivocadas = [];
+    numIntentos = 0;
+    cantAciertos = 0;
+    letrasAcertadas = 0;
+    juegoFinalizado = false;
+}
+
+
 
 function dibujarLinea(){
     tablero.Linewidth = 6;
