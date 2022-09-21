@@ -61,7 +61,6 @@ function validarLetraMayuscula(letra){
         }
     }
     return valida;
-    console.log(letrasValidas);
 }
 
 function NuevoJuego(){
@@ -76,3 +75,81 @@ function Desistir(){
     document.getElementById("btnIniciarJuego").style.display = "inline";
     document.getElementById("btnAgregarPalabra").style.display = "inline";
 }
+
+function agregarNuevaPalabra(){
+    document.getElementById("btnIniciarJuego").style.display = "none";
+    document.getElementById("btnAgregarPalabra").style.display = "none";
+
+    document.getElementById("txtIngresarPalabra").style.display = "inline";
+    document.getElementById("txtIngresarPalabra").focus();
+    document.getElementById("imgAviso").style.display = "inline";
+    document.getElementById("lblMensaje").style.display = "inline";
+    document.getElementById("btnGuardarPalabra").style.display = "inline";
+    document.getElementById("btnCancelarPalabra").style.display = "inline";
+
+}
+
+function cancelarNuevaPalabra(){
+    document.getElementById("btnIniciarJuego").style.display = "inline";
+    document.getElementById("btnAgregarPalabra").style.display = "inline";
+
+    document.getElementById("txtIngresarPalabra").style.display = "none";
+    document.getElementById("imgAviso").style.display = "none";
+    document.getElementById("lblMensaje").style.display = "none";
+    document.getElementById("btnGuardarPalabra").style.display = "none";
+    document.getElementById("btnCancelarPalabra").style.display = "none";
+}
+
+function guardarPalabra(){
+    var nuePalabra = document.getElementById("txtIngresarPalabra");
+    var nuePalabraMayus = nuePalabra.value.toUpperCase();
+
+    if(verificarSimbolos(nuePalabraMayus)){
+        if(palabraRepetida(nuePalabraMayus)){
+            alert("Esta palabra ya existe en el juego");
+            document.getElementById("txtIngresarPalabra").value = "";
+            nuePalabra.focus();
+        }else{
+            palabras.push(nuePalabraMayus);
+        
+            document.getElementById("txtIngresarPalabra").value = "";
+            document.getElementById("txtIngresarPalabra").style.display = "none";
+            document.getElementById("imgAviso").style.display = "none";
+            document.getElementById("lblMensaje").style.display = "none";
+            document.getElementById("btnGuardarPalabra").style.display = "none";
+            document.getElementById("btnCancelarPalabra").style.display = "none";
+    
+            IniciarJuego();
+        }
+    }else{
+        alert("No puede ingresar números, símbolos ni letras con acento.");
+        document.getElementById("txtIngresarPalabra").value = "";
+        nuePalabra.focus();
+    }
+    
+    console.log(palabras);
+}
+
+function verificarSimbolos(palabra){
+    let arrPalabra = palabra.split('');
+    let haySimbolos = true;
+    for(let i = 0; i< arrPalabra.length; i++){
+        if(validarLetraMayuscula(arrPalabra[i]) == false){
+            haySimbolos = false;
+            break;
+        }
+    }
+    return haySimbolos;
+}
+
+function palabraRepetida(palabra){
+    let repetida = false;
+    for(let i = 0; i < palabras.length; i++){
+        if(palabra == palabras[i]){
+            repetida = true;
+        }
+    }
+    return repetida;
+}
+
+

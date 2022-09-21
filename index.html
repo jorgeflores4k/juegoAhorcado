@@ -24,9 +24,18 @@
                 <input type="button" value="Nuevo Juego" onclick="NuevoJuego()" class="btnNuevoJuego" id="btnNuevoJuego"  >
                 <input type="button" value="Desistir" onclick="Desistir()" class="btnDesistir" id="btnDesistir" >
             </div>
+
+            <div>
+                <input type="text" placeholder="Ingrese Una palabra" class="txtIngresarPalabra" id="txtIngresarPalabra">
+                <img src="Imagenes/Vector.png" alt="Simbolo aviso" class="imgAviso" id="imgAviso">
+                <label for="" class="lblMensaje" id="lblMensaje">Máx. de 8 letras.</label>
+                <input type="button" value="Guardar y empezar" onclick="guardarPalabra()" class="btnGuardarPalagra" id="btnGuardarPalabra">
+                <input type="button" value="Cancelar" onclick="cancelarNuevaPalabra()" class="btnCancelarPalabra" id="btnCancelarPalabra">
+            </div>
+
             <div>
                 <input type="button" value="Iniciar juego" onclick="IniciarJuego()" class="btnIniciar" id="btnIniciarJuego">
-                <input type="button" value="Agregar nueva palabra" class="btnAgregarPalabra" id="btnAgregarPalabra">
+                <input type="button" value="Agregar nueva palabra" onclick="agregarNuevaPalabra()" class="btnAgregarPalabra" id="btnAgregarPalabra">
             </div>
             
         </main>
