@@ -11,8 +11,6 @@ function dibujarCanvas(){
     tablero.lineTo(600, 400);
     tablero.stroke();
     tablero.closePath();
-
-    
 }
 
 function verificarLetra(valor){
@@ -30,14 +28,15 @@ function verificarLetra(valor){
     return probada;
 }
 
-function insertarLetras(valor){
+function insertarLetras(event){
+    let valor = event.key;
     let anchura = 600/palabraSecreta.length;
     acerto = false;
 
-    if(validarLetraMayuscula(valor)){
-        if(juegoFinalizado){  //numIntentos == 10
-            //alert("El juego termino");
-        }else{
+    
+    if(juegoFinalizado){  
+    }else{
+        if(validarLetraMayuscula(valor)){
             if(verificarLetra(valor) == false){
                 for(let i = 0; i < palabraArray.length; i++){
                     if(valor == palabraArray[i]){
@@ -47,9 +46,7 @@ function insertarLetras(valor){
                         letrasAcertadas++;
                         if(letrasAcertadas == cantAciertos){
                             ganador();
-                            juegoFinalizado = true;
-                            //numIntentos = 10;
-                            
+                            juegoFinalizado = true;                          
                         }
                     }
                 }
@@ -68,6 +65,7 @@ function insertarLetras(valor){
             }
         }
     }
+    
     console.log(numIntentos);
 }
 

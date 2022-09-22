@@ -1,4 +1,4 @@
-let palabras = ["ALURA", "ORACLE", "JAVASCRIPT", "HTML", "JORGE", "TRADING"];
+let palabras = ["MARCIANO", "ALMOADA", "LENTES", "LAPTOP", "CARRO", "SMART", "ANDROID", "CUADERNO", "MARISCO", "MANZANA"];
 let tablero = document.getElementById("forca").getContext("2d");
 let palabraSecreta = "";
 let palabraArray = [];
@@ -14,7 +14,7 @@ let juegoFinalizado = false;
 function escogerPalabraSecreta(){
     let palabra = palabras[Math.floor(Math.random() * palabras.length)];
     palabraSecreta = palabra;
-    console.log(palabraSecreta);
+    console.log(palabras);
 
     palabraArray = palabraSecreta.split('');
     cantAciertos = palabraArray.length;
@@ -39,10 +39,11 @@ function IniciarJuego(){
     escogerPalabraSecreta();
     dibujarCanvas();
     dibujarLinea();
-    document.addEventListener('keydown', (event) => {
+    /*document.addEventListener('keydown', (event) => {
         const keyName = event.key;
         insertarLetras(keyName);
-    });   
+    });   */
+    window.addEventListener('keydown', insertarLetras);
 }
 
 function validarLetraMayuscula(letra){
@@ -53,10 +54,11 @@ function validarLetraMayuscula(letra){
     for(let i = 0; i< letrasValidas.length; i++){
         if(letra == letrasValidas[i]){
             valida = true;
-            
+            break;
         }else{
             if(letra == letrasMinusculas[i]){
                 alert("Solo puede escribir en letras mayusculas");
+                break;
             }
         }
     }
@@ -74,6 +76,7 @@ function Desistir(){
     document.getElementById("btnDesistir").style.display = "none";
     document.getElementById("btnIniciarJuego").style.display = "inline";
     document.getElementById("btnAgregarPalabra").style.display = "inline";
+    window.removeEventListener('keydown', insertarLetras); 
 }
 
 function agregarNuevaPalabra(){
@@ -132,14 +135,14 @@ function guardarPalabra(){
 
 function verificarSimbolos(palabra){
     let arrPalabra = palabra.split('');
-    let haySimbolos = true;
+    let NoHaySimbolos = true;
     for(let i = 0; i< arrPalabra.length; i++){
         if(validarLetraMayuscula(arrPalabra[i]) == false){
-            haySimbolos = false;
+            NoHaySimbolos = false;
             break;
         }
     }
-    return haySimbolos;
+    return NoHaySimbolos;
 }
 
 function palabraRepetida(palabra){

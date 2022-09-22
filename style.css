@@ -1,3 +1,7 @@
+body{
+    background: rgb(243, 245, 246);
+}
+
 /*********** Pantalla de INICIO ***********/
 
 .logo{
@@ -15,8 +19,6 @@
     left: 40%;
     top: 402px;
 
-    /* Dark blue/dark-blue-300 */
-
     background: #0A3871;
     border-radius: 24px;
 
@@ -24,13 +26,8 @@
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    
-    /* White */
 
     color: #FFFFFF;
-
-
-    /* Inside auto layout */
 
     flex: none;
     order: 0;
@@ -45,8 +42,6 @@
     left: 41%;
     top: 490px;
 
-    /* Dark blue/dark-blue-300 */
-
     background: white;
     border-radius: 24px;
 
@@ -55,12 +50,7 @@
     font-weight: 400;
     font-size: 16px;
 
-    /* Dark blue/dark-blue-300 */
-
     color: #0A3871;
-
-
-    /* Inside auto layout */
 
     flex: none;
     order: 0;
@@ -71,7 +61,6 @@
 /*********** Pantalla de JUEGO ***********/
 
 .btnNuevoJuego{
-    /* Auto layout */
     display: none;
     padding: 24px;
     position: absolute;
@@ -80,14 +69,10 @@
     left: 28%;
     bottom : 13%;
 
-    /* Dark blue/dark-blue-300 */
-
     background: #0A3871;
     border-radius: 24px;
-
     
     color: #FFFFFF;
-    
 
     font-family: 'Inter';
     font-style: normal;
@@ -109,8 +94,6 @@
 
     border-radius: 24px;
 
-
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -118,11 +101,7 @@
     line-height: 19px;
     text-align: center;
 
-    /* Dark blue/dark-blue-300 */
-
     color: #0A3871;
-
-
 }
 
 .contenedor{
@@ -150,7 +129,7 @@
     border-style: none;
 
     color: #0A3871;
-
+    background-color: rgb(243, 245, 246);
 }
 
 .imgAviso{
@@ -170,15 +149,10 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 150%;
-    /* identical to box height, or 18px */
-
-
-    /* Gray/gray-400 */
 
     color: #495057;
 
     opacity: 0.8;
-
 }
 
 .btnGuardarPalagra{
@@ -190,14 +164,10 @@
     left: 28%;
     bottom : 13%;
 
-    /* Dark blue/dark-blue-300 */
-
     background: #0A3871;
     border-radius: 24px;
-
     
     color: #FFFFFF;
-    
 
     font-family: 'Inter';
     font-style: normal;
@@ -219,16 +189,12 @@
 
     border-radius: 24px;
 
-
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 5px;
     text-align: center;
-
-    /* Dark blue/dark-blue-300 */
 
     color: #0A3871;
 }
