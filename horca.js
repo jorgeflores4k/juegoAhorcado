@@ -108,29 +108,42 @@ function guardarPalabra(){
     var nuePalabraMayus = nuePalabra.value.toUpperCase();
 
     if(verificarSimbolos(nuePalabraMayus)){
-        if(palabraRepetida(nuePalabraMayus)){
-            alert("Esta palabra ya existe en el juego");
+        if(cantidadLetras(nuePalabraMayus)){
+            if(palabraRepetida(nuePalabraMayus)){
+                alert("Esta palabra ya existe en el juego");
+                document.getElementById("txtIngresarPalabra").value = "";
+                nuePalabra.focus();
+            }else{
+                palabras.push(nuePalabraMayus);
+            
+                document.getElementById("txtIngresarPalabra").value = "";
+                document.getElementById("txtIngresarPalabra").style.display = "none";
+                document.getElementById("imgAviso").style.display = "none";
+                document.getElementById("lblMensaje").style.display = "none";
+                document.getElementById("btnGuardarPalabra").style.display = "none";
+                document.getElementById("btnCancelarPalabra").style.display = "none";
+        
+                IniciarJuego();
+            }
+        }else{
+            alert("La palabra no puede contener mas de 8 letras.");
             document.getElementById("txtIngresarPalabra").value = "";
             nuePalabra.focus();
-        }else{
-            palabras.push(nuePalabraMayus);
-        
-            document.getElementById("txtIngresarPalabra").value = "";
-            document.getElementById("txtIngresarPalabra").style.display = "none";
-            document.getElementById("imgAviso").style.display = "none";
-            document.getElementById("lblMensaje").style.display = "none";
-            document.getElementById("btnGuardarPalabra").style.display = "none";
-            document.getElementById("btnCancelarPalabra").style.display = "none";
-    
-            IniciarJuego();
         }
     }else{
         alert("No puede ingresar números, símbolos ni letras con acento.");
         document.getElementById("txtIngresarPalabra").value = "";
         nuePalabra.focus();
     }
-    
-    console.log(palabras);
+}
+
+function cantidadLetras(palabra){
+    let arrPalabra = palabra.split('');
+    let cantidadCorrecta = true;
+    if(arrPalabra.length >= 9){
+        cantidadCorrecta = false;
+    }
+    return cantidadCorrecta;
 }
 
 function verificarSimbolos(palabra){
